@@ -1,8 +1,20 @@
 {
   "name": "kawaii-terrarium",
-  "displayName": "kawaii-terrarium",
-  "description": "",
-  "version": "0.0.1",
+  "displayName": "Kawaii Terrarium",
+  "description": "Cute Mofu characters living in your VS Code editor",
+  "version": "0.1.0",
+  "publisher": "k2-gc",
+  "icon": "media/logo/icon.png",
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/k2-gc/kawaii-terrarium"
+  },
+  "bugs": {
+    "url": "https://github.com/k2-gc/kawaii-terrarium/issues"
+  },
+  "homepage": "https://github.com/k2-gc/kawaii-terrarium",
+  "keywords": ["pet", "cute", "terrarium", "fun", "animation", "kawaii", "mofu"],
   "engines": {
     "vscode": "^1.107.0"
   },
@@ -17,11 +29,11 @@
     "commands": [
       {
         "command": "kawaii-terrarium.summonFriend",
-        "title": "kawaii terrarium: Summon Aidoru"
+        "title": "Kawaii Terrarium: Summon Mofu"
       },
       {
         "command": "kawaii-terrarium.dismissFriend",
-        "title": "kawaii terrarium: Dismiss Aidoru"
+        "title": "Kawaii Terrarium: Dismiss Mofu"
       }
     ]
   },
