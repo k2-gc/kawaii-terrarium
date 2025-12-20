@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; 
+                   img-src {{cspSource}} https:; 
+                   script-src 'nonce-{{nonce}}';
+                   style-src {{cspSource}};
+                   connect-src {{cspSource}} https: data:"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{cssUri}}" />
+    <title>Kawaii Terrarium</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script nonce="{{nonce}}">
+      window.mofuConfigs = {{mofuConfigsJson}};
+      window.mofuFramesList = {{mofuFramesListJson}};
+    </script>
+    <script nonce="{{nonce}}" type="module" src="{{jsUri}}"></script>
+  </body>
+</html>

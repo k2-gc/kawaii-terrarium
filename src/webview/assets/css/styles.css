@@ -1,0 +1,17 @@
+:root {
+  --primary-color: #ff69b4;
+  --background-color: #fff0f5;
+  --text-color: #333333;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+}
