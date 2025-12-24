@@ -6,6 +6,8 @@ import { hedgehog1Config } from './hedgehog1';
 import { hedgehog2Config } from './hedgehog2';
 import { elephant1Config } from './elephant1';
 import { elephant2Config } from './elephant2';
+import { tortoise1Config } from './tortoise1';
+import { turtle1Config } from './turtle1';
 import type { MofuConfig } from './types';
 
 export const MOFU_CONFIGS: MofuConfig[] = [
@@ -17,6 +19,8 @@ export const MOFU_CONFIGS: MofuConfig[] = [
   hedgehog2Config,
   elephant1Config,
   elephant2Config,
+  tortoise1Config,
+  turtle1Config,
 ];
 
 export type { AnimationKey, MofuConfig, AnimationFrames } from './types';
