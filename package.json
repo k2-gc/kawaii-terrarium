@@ -2,7 +2,7 @@
   "name": "kawaii-terrarium",
   "displayName": "Kawaii Terrarium",
   "description": "Cute Mofu characters living in your VS Code editor",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "k2-gc",
   "icon": "media/logo/icon.png",
   "license": "SEE LICENSE IN LICENSE",

@@ -52,6 +52,8 @@ Each Mofu can transform into:
 - 🐿️ **Squirrels** (2 variants)
 - 🦔 **Hedgehogs** (2 variants)
 - 🐘 **Elephants** (2 variants)
+- 🐢 **tortoise** (1 variant)
+- 🐢 **turtle** (1 variant)
 
 ## Requirements
 
@@ -68,6 +70,10 @@ See [CHANGELOG.md](./CHANGELOG.md) for detailed release notes.
 ### 0.1.0
 
 Initial release of Kawaii Terrarium!
+
+### 0.1.2
+
+Added new Mofu characters: tortoise and turtle!
 
 ## License
 
