@@ -20,3 +20,11 @@ All notable changes to the "kawaii-terrarium" extension will be documented in th
 
 Happy Holidays! 🎄✨  
 Wishing you a relaxing holiday season! 🌟
+
+## [1.0.0] - 2025-12-30 🎉
+
+### Added
+- Added Secondary SideBar support!
+- Set Sidebar display as default
+- You can move the Mofus' terrarium to your preferred location.
+- Previous display is still supported.

@@ -10,9 +10,14 @@ They simply roam around your workspace, bringing relaxation to your coding sessi
 - 🐱 **Adorable animated characters** - Cats, squirrels, hedgehogs, and elephants
 - 🚶 **Smooth animations** - Characters walk around your editor with idle animations
 - ✨ **Random appearances** - Characters randomly appear and disappear
-- 🎮 **Easy controls** - Toggle visibility with status bar button or commands
+- 🪟 **Secondary Sidebar support** - Mofu now lives in the right sidebar (secondary sidebar) by default!
+- 🎮 **Easy controls** - Summon or dismiss Mofus via command palette
 
 ## Demo
+- On Secondary SideBar
+![Demo Gif](./media/demo2.gif)
+
+- On panel
 ![Demo Gif](./media/demo.gif)
 
 ## What is "Mofu"?
@@ -26,15 +31,13 @@ The name perfectly captures these cute, shape-shifting creatures! 🌸
 
 ## Usage
 
-### Via Status Bar
-Click the "TerraKawa" button in the status bar to toggle Mofu visibility.
-
 ### Via Command Palette
 1. Open Command Palette (`Cmd+Shift+P` on Mac, `Ctrl+Shift+P` on Windows/Linux)
 2. Type "Kawaii Terrarium"
 3. Select:
-   - **Summon Mofu** - Add cute characters to your editor
-   - **Dismiss Mofu** - Remove all characters
+   - **Summon Mofu on Secondary Sidebar** - Show Mofus in the right sidebar
+   - **Summon Mofu on Panel** - Show cute characters in your editor
+   - **Dismiss Mofu from Panel** - Remove all characters from your editor
 
 ## Installation
 
@@ -74,6 +77,11 @@ Initial release of Kawaii Terrarium!
 ### 0.1.2
 
 Added new Mofu characters: tortoise and turtle!
+
+### 1.0.0🎉
+
+Added Secondary SideBar support!
+
 
 ## License
 
