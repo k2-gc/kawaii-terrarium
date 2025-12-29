@@ -29,7 +29,7 @@
     "commands": [
       {
         "command": "kawaii-terrarium.summonMofus",
-        "title": "Kawaii Terrarium: Summon Mofu on Side Bar"
+        "title": "Kawaii Terrarium: Summon Mofu on SideBar"
       },
       {
         "command": "kawaii-terrarium.summonFriend",
