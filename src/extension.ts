@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { KawaiiTerrariumViewProvider } from './webview/KawaiiTerrariumViewProvider';
 import { getWebviewHtml } from './webview/getWebviewHtml';
 
 export function activate(context: vscode.ExtensionContext) {
@@ -88,10 +89,14 @@ export function activate(context: vscode.ExtensionContext) {
   });
   context.subscriptions.push(toggleCommand);
 
-  const statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
-  statusBar.text = 'TerraKawa';
-  statusBar.tooltip = 'Kawaii Terrarium: Toggle Friend';
-  statusBar.command = 'kawaii-terrarium.toggleFriend';
-  statusBar.show();
-  context.subscriptions.push(statusBar);
+  const viewProvider = vscode.window.registerWebviewViewProvider(
+    KawaiiTerrariumViewProvider.viewType,
+    new KawaiiTerrariumViewProvider(context)
+  );
+  context.subscriptions.push(viewProvider);
+
+  const viewCommand = vscode.commands.registerCommand('kawaii-terrarium.summonMofus', () => {
+    vscode.commands.executeCommand('workbench.view.extension.kawaii-terrarium-secondary-sidebar');
+  });
+  context.subscriptions.push(viewCommand);
 }

@@ -28,14 +28,37 @@
   "contributes": {
     "commands": [
       {
+        "command": "kawaii-terrarium.summonMofus",
+        "title": "Kawaii Terrarium: Summon Mofu on Side Bar"
+      },
+      {
         "command": "kawaii-terrarium.summonFriend",
-        "title": "Kawaii Terrarium: Summon Mofu"
+        "title": "Kawaii Terrarium: Summon Mofu on Panel"
       },
       {
         "command": "kawaii-terrarium.dismissFriend",
-        "title": "Kawaii Terrarium: Dismiss Mofu"
+        "title": "Kawaii Terrarium: Dismiss Mofu from Panel"
       }
-    ]
+    ],
+    "viewsContainers": {
+      "secondarySidebar": [
+        {
+          "id": "kawaii-terrarium-secondary-sidebar",
+          "title": "Kawaii Terrarium",
+          "icon": "media/logo/icon.png"
+        }
+      ]
+    },
+    "views": {
+      "kawaii-terrarium-secondary-sidebar": [
+        {
+          "id": "kawaii-terrarium-secondary-sidebar-view",
+          "name": "Mofu Terrarium",
+          "icon": "media/logo/icon.png",
+          "type": "webview"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
