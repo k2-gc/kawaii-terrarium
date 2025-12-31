@@ -14,10 +14,10 @@ They simply roam around your workspace, bringing relaxation to your coding sessi
 - 🎮 **Easy controls** - Summon or dismiss Mofus via command palette
 
 ## Demo
-- On Secondary SideBar
+- On Secondary SideBar  
    ![Demo Gif](./media/demo2.gif)
 
-- On panel
+- On panel  
    ![Demo Gif](./media/demo.gif)
 
 ## What is "Mofu"?
