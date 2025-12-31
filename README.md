@@ -15,10 +15,10 @@ They simply roam around your workspace, bringing relaxation to your coding sessi
 
 ## Demo
 - On Secondary SideBar
-![Demo Gif](./media/demo2.gif)
+   ![Demo Gif](./media/demo2.gif)
 
 - On panel
-![Demo Gif](./media/demo.gif)
+   ![Demo Gif](./media/demo.gif)
 
 ## What is "Mofu"?
 
