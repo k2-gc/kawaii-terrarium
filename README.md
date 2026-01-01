@@ -57,6 +57,7 @@ Each Mofu can transform into:
 - 🐘 **Elephants** (2 variants)
 - 🐢 **tortoise** (1 variant)
 - 🐢 **turtle** (1 variant)
+- 🫏 **horse** (3 variants)
 
 ## Requirements
 
@@ -81,6 +82,10 @@ Added new Mofu characters: tortoise and turtle!
 ### 1.0.0🎉
 
 Added Secondary SideBar support!
+
+### 1.0.1
+
+Added new Mofus: 3 horses!
 
 
 ## License

@@ -28,3 +28,15 @@ Wishing you a relaxing holiday season! 🌟
 - Set Sidebar display as default
 - You can move the Mofus' terrarium to your preferred location.
 - Previous display is still supported.
+
+## [1.0.1] - 2026-01-01 🎉
+
+### Added
+- Added new Mofus (3 horses):
+    - Brown
+    - White
+    - Black
+
+Happy New Year!
+It’s the Year of the Horse.
+Wishing you a great year ahead!
