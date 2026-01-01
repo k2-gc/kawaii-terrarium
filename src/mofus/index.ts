@@ -8,6 +8,9 @@ import { elephant1Config } from './elephant1';
 import { elephant2Config } from './elephant2';
 import { tortoise1Config } from './tortoise1';
 import { turtle1Config } from './turtle1';
+import { horse1Config } from './horse1';
+import { horse2Config } from './horse2';
+import { horse3Config } from './horse3';
 import type { MofuConfig } from './types';
 
 export const MOFU_CONFIGS: MofuConfig[] = [
@@ -21,6 +24,9 @@ export const MOFU_CONFIGS: MofuConfig[] = [
   elephant2Config,
   tortoise1Config,
   turtle1Config,
+  horse1Config,
+  horse2Config,
+  horse3Config,
 ];
 
 export type { AnimationKey, MofuConfig, AnimationFrames } from './types';
