@@ -55,9 +55,9 @@ Each Mofu can transform into:
 - 🐿️ **Squirrels** (2 variants)
 - 🦔 **Hedgehogs** (2 variants)
 - 🐘 **Elephants** (2 variants)
-- 🐢 **tortoise** (1 variant)
-- 🐢 **turtle** (1 variant)
-- 🫏 **horse** (3 variants)
+- 🐢 **Tortoise** (1 variant)
+- 🐢 **Turtle** (1 variant)
+- 🫏 **Horse** (3 variants)
 
 ## Requirements
 
