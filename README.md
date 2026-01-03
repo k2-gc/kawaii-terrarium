@@ -41,12 +41,17 @@ The name perfectly captures these cute, shape-shifting creatures! 🌸
 
 ## Installation
 
+### Option 1
 1. Open VS Code
 2. Go to Extensions (`Cmd+Shift+X` / `Ctrl+Shift+X`)
 3. Search for "Kawaii Terrarium"
 4. Click Install
 
-Or install from VS Code Marketplace
+### Option 2
+👉 [Open in VS Code](vscode:extension/k2-gc.kawaii-terrarium)
+
+### Option 3
+Install from [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=k2-gc.kawaii-terrarium)
 
 ## Characters
 
