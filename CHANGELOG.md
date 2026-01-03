@@ -40,3 +40,8 @@ Wishing you a relaxing holiday season! 🌟
 Happy New Year!
 It’s the Year of the Horse.
 Wishing you a great year ahead!
+
+## [1.0.2] - 2026-01-03
+
+### Added
+- Added new Mofus (2 cats and 2 ducks)

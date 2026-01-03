@@ -51,13 +51,14 @@ Or install from VS Code Marketplace
 ## Characters
 
 Each Mofu can transform into:
-- 🐱 **Cats** (2 variants)
+- 🐱 **Cats** (4 variants)
 - 🐿️ **Squirrels** (2 variants)
 - 🦔 **Hedgehogs** (2 variants)
 - 🐘 **Elephants** (2 variants)
 - 🐢 **Tortoises** (1 variant)
 - 🐢 **Turtles** (1 variant)
 - 🫏 **Horses** (3 variants)
+- 🦆 **Ducks** (2 variants)
 
 ## Requirements
 
@@ -86,6 +87,10 @@ Added Secondary SideBar support!
 ### 1.0.1
 
 Added new Mofus: 3 horses!
+
+### 1.0.2
+
+Added new Mofus: 2 cats and 2 ducks!
 
 
 ## License
