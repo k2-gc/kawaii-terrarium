@@ -48,9 +48,6 @@ The name perfectly captures these cute, shape-shifting creatures! 🌸
 4. Click Install
 
 ### Option 2
-👉 [Open in VS Code](vscode:extension/k2-gc.kawaii-terrarium)
-
-### Option 3
 Install from [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=k2-gc.kawaii-terrarium)
 
 ## Characters
