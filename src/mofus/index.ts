@@ -1,5 +1,7 @@
 import { cat1Config } from './cat1';
 import { cat2Config } from './cat2';
+import { cat3Config } from './cat3';
+import { cat4Config } from './cat4';
 import { squirrel1Config } from './squirrel1';
 import { squirrel2Config } from './squirrel2';
 import { hedgehog1Config } from './hedgehog1';
@@ -11,11 +13,15 @@ import { turtle1Config } from './turtle1';
 import { horse1Config } from './horse1';
 import { horse2Config } from './horse2';
 import { horse3Config } from './horse3';
+import { duck1Config } from './duck1';
+import { duck2Config } from './duck2';
 import type { MofuConfig } from './types';
 
 export const MOFU_CONFIGS: MofuConfig[] = [
   cat1Config,
   cat2Config,
+  cat3Config,
+  cat4Config,
   squirrel1Config,
   squirrel2Config,
   hedgehog1Config,
@@ -27,6 +33,8 @@ export const MOFU_CONFIGS: MofuConfig[] = [
   horse1Config,
   horse2Config,
   horse3Config,
+  duck1Config,
+  duck2Config,
 ];
 
 export type { AnimationKey, MofuConfig, AnimationFrames } from './types';
