@@ -1,12 +1,15 @@
 import { Mofu } from './mofus/Mofu';
 import type { MofuConfig } from '../../../mofus/types';
 import { BackgroundRenderer } from './background/BackgroundRenderer';
+import type { SceneSpec } from '../../../scenes/types';
 
-// Extend the Window interface to include mofuConfigs and mofuFramesList
+// Extend the Window interface to include mofuConfigs, mofuFramesList, sceneConfig, and sceneTiles
 declare global {
   interface Window {
     mofuConfigs: MofuConfig[];
     mofuFramesList: string[][];
+    sceneConfig: SceneSpec;
+    sceneTiles: Record<string, string>;
   }
 }
 
@@ -120,8 +123,8 @@ class MofuKeeper {
 
 const configs = window.mofuConfigs;
 const framesList = window.mofuFramesList;
-const sceneConfig = (window as any).sceneConfig;
-const sceneTiles = (window as any).sceneTiles;
+const sceneConfig = window.sceneConfig;
+const sceneTiles = window.sceneTiles;
 
 type VsCodeCommandMessage = {
   command: 'dismissAll';
@@ -154,9 +157,9 @@ if (configs && framesList && sceneConfig && sceneTiles) {
   console.error('Failed to load mofu config or frames');
 }
 
-if (sceneConfig && sceneTiles) {
+try {
   new BackgroundRenderer(sceneConfig, sceneTiles);
   console.log('Background initialized:', sceneConfig.name);
-} else {
-  console.error('Failed to load scene config or tiles');
+} catch (error) {
+  console.error('Failed to load scene config or tiles', error);
 }

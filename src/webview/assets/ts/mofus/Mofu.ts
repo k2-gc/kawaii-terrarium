@@ -33,8 +33,15 @@ class Mofu {
     this.element.style.height = 'auto';
     this.element.style.imageRendering = 'pixelated';
     this.element.style.pointerEvents = 'none';
+
+    // Calculate vertical offset based on ground and border tiles
     const groundOffset = TILE_SIZE * groundTileNum;
     const borderOffset = TILE_SIZE * borderTileNum;
+    /**
+     * Mofu vertical offset calculation:
+     * Expected bottom-half of border height belongs to ground part,
+     * so we add half of borderOffset to groundOffset for correct positioning.
+     */
     const mofuOffset = groundOffset + Math.floor(borderOffset / 2);
     this.element.style.bottom = `${mofuOffset}px`;
     document.body.appendChild(this.element);
