@@ -1,5 +1,6 @@
 import { Mofu } from './mofus/Mofu';
 import type { MofuConfig } from '../../../mofus/types';
+import { BackgroundRenderer } from './background/BackgroundRenderer';
 
 // Extend the Window interface to include mofuConfigs and mofuFramesList
 declare global {
@@ -13,10 +14,14 @@ class MofuKeeper {
   private configs: MofuConfig[];
   private framesList: string[][];
   private active: Map<string, Mofu> = new Map();
+  private groundTileNum: number;
+  private borderTileNum: number;
 
-  constructor(configs: MofuConfig[], framesList: string[][]) {
+  constructor(configs: MofuConfig[], framesList: string[][], groundTileNum = 1, borderTileNum = 1) {
     this.configs = configs;
     this.framesList = framesList;
+    this.groundTileNum = groundTileNum;
+    this.borderTileNum = borderTileNum;
     this.summonMofu();
     this.scheduleNextMofu();
   }
@@ -34,7 +39,9 @@ class MofuKeeper {
     const idx = Math.floor(Math.random() * available.length);
     const config = available[idx];
     const frames = this.framesList[this.configs.indexOf(config)];
-    const mofu = new Mofu(config, frames, () => this.handleMofuDismissed(config.id));
+    const mofu = new Mofu(config, frames, this.groundTileNum, this.borderTileNum, () =>
+      this.handleMofuDismissed(config.id)
+    );
     this.active.set(config.id, mofu);
     console.log(`Mofu Summoned: ${config.name} (${config.id})`);
   }
@@ -127,8 +134,16 @@ const isVsCodeCommandMessage = (message: unknown): message is VsCodeCommandMessa
   );
 };
 
+const sceneConfig = (window as any).sceneConfig;
+const sceneTiles = (window as any).sceneTiles;
+
 if (configs && framesList) {
-  const keeper = new MofuKeeper(configs, framesList);
+  const keeper = new MofuKeeper(
+    configs,
+    framesList,
+    sceneConfig.ground.numTile,
+    sceneConfig.border.numTile
+  );
   console.log('Mofu initialized:', configs.map((c) => c.name).join(', '));
   window.addEventListener('message', (event) => {
     const message = event.data;
@@ -138,4 +153,11 @@ if (configs && framesList) {
   });
 } else {
   console.error('Failed to load mofu config or frames');
+}
+
+if (sceneConfig && sceneTiles) {
+  new BackgroundRenderer(sceneConfig, sceneTiles);
+  console.log('Background initialized:', sceneConfig.name);
+} else {
+  console.error('Failed to load scene config or tiles');
 }

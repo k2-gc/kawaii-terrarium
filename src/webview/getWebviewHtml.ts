@@ -2,6 +2,8 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import { getUri, getNonce } from './webviewUtils';
 import { MOFU_CONFIGS } from '../mofus';
+import { DEFAULT_SCENE } from '../scenes';
+import type { SceneSpec } from '../scenes/typs';
 
 const FALLBACK_HTML =
   '<!DOCTYPE html><html><body><p>Failed to load webview content.</p></body></html>';
@@ -18,6 +20,7 @@ const getWebviewHtml = async (
   try {
     const nonce = getNonce();
     const cspSource = webview.cspSource;
+
     const cssUri = getUri(webview, extensionUri, ['src', 'webview', 'assets', 'css', 'styles.css']);
     const jsUri = getUri(webview, extensionUri, ['out', 'webview', 'main.js']);
 
@@ -25,6 +28,9 @@ const getWebviewHtml = async (
     const mofuFramesList = mofuConfigs.map((config) =>
       loadMofuFrames(webview, extensionUri, config.id, config.frameCount)
     );
+
+    const sceneConfig = DEFAULT_SCENE;
+    const sceneTiles = loadSceneTiles(webview, extensionUri, sceneConfig);
 
     // Escape JSON for safe HTML embedding
     const escapeJson = <T>(obj: T): string => {
@@ -41,7 +47,9 @@ const getWebviewHtml = async (
       .replace(/{{cssUri}}/g, cssUri.toString())
       .replace(/{{jsUri}}/g, jsUri.toString())
       .replace(/{{mofuConfigsJson}}/g, escapeJson(mofuConfigs))
-      .replace(/{{mofuFramesListJson}}/g, escapeJson(mofuFramesList));
+      .replace(/{{mofuFramesListJson}}/g, escapeJson(mofuFramesList))
+      .replace(/{{sceneConfigJson}}/g, escapeJson(sceneConfig))
+      .replace(/{{sceneTilesJson}}/g, escapeJson(sceneTiles));
 
     return html;
   } catch (error) {
@@ -87,6 +95,29 @@ const loadMofuFrames = (
       )
       .toString()
   );
+};
+
+const loadSceneTiles = (
+  webview: vscode.Webview,
+  extensionUri: vscode.Uri,
+  scene: SceneSpec
+): Record<string, string> => {
+  const sceneFolder = scene.id;
+
+  const getTileUri = (tileSet: string): string => {
+    const uri = webview
+      .asWebviewUri(
+        vscode.Uri.joinPath(extensionUri, 'media', 'background', sceneFolder, `${tileSet}.png`)
+      )
+      .toString();
+    return uri;
+  };
+
+  return {
+    background: getTileUri(scene.background.tileSet),
+    border: getTileUri(scene.border.tileSet),
+    ground: getTileUri(scene.ground.tileSet),
+  };
 };
 
 export { getWebviewHtml };
