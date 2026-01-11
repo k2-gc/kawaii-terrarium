@@ -30,14 +30,6 @@
       {
         "command": "kawaii-terrarium.summonMofus",
         "title": "Kawaii Terrarium: Summon Mofu on Secondary SideBar"
-      },
-      {
-        "command": "kawaii-terrarium.summonFriend",
-        "title": "Kawaii Terrarium: Summon Mofu on Panel"
-      },
-      {
-        "command": "kawaii-terrarium.dismissFriend",
-        "title": "Kawaii Terrarium: Dismiss Mofu from Panel"
       }
     ],
     "viewsContainers": {
