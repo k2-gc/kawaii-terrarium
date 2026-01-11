@@ -3,7 +3,7 @@ import type { MofuConfig } from './types';
 export const duck2Config: MofuConfig = {
   id: 'duck2',
   name: 'Duck',
-  frameCount: 10,
+  frameCount: 6,
   width: 64,
   height: 64,
   animations: {
