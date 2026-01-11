@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import { getUri, getNonce } from './webviewUtils';
 import { MOFU_CONFIGS } from '../mofus';
 import { DEFAULT_SCENE } from '../scenes';
-import type { SceneSpec } from '../scenes/typs';
+import type { SceneSpec } from '../scenes/types';
 
 const FALLBACK_HTML =
   '<!DOCTYPE html><html><body><p>Failed to load webview content.</p></body></html>';

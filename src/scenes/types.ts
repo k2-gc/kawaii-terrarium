@@ -8,7 +8,7 @@ export interface SceneSpec {
 
   background: {
     tileSet: string;
-    numTile: -1;
+    numTile: number | -1;
   };
 
   border: {

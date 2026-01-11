@@ -120,6 +120,8 @@ class MofuKeeper {
 
 const configs = window.mofuConfigs;
 const framesList = window.mofuFramesList;
+const sceneConfig = (window as any).sceneConfig;
+const sceneTiles = (window as any).sceneTiles;
 
 type VsCodeCommandMessage = {
   command: 'dismissAll';
@@ -134,10 +136,7 @@ const isVsCodeCommandMessage = (message: unknown): message is VsCodeCommandMessa
   );
 };
 
-const sceneConfig = (window as any).sceneConfig;
-const sceneTiles = (window as any).sceneTiles;
-
-if (configs && framesList) {
+if (configs && framesList && sceneConfig && sceneTiles) {
   const keeper = new MofuKeeper(
     configs,
     framesList,

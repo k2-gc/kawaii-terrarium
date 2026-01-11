@@ -1,4 +1,4 @@
-import type { SceneSpec } from '../../../../scenes/typs';
+import type { SceneSpec } from '../../../../scenes/types';
 import { TILE_SIZE } from '../constants';
 
 class BackgroundRenderer {
@@ -7,6 +7,7 @@ class BackgroundRenderer {
   private backgroundEl: HTMLElement;
   private borderEl: HTMLElement;
   private groundEl: HTMLElement;
+  private resizeTimeout: number | undefined;
 
   constructor(private scene: SceneSpec, private tiles: Record<string, string>) {
     this.backgroundEl = document.getElementById('background-layer')!;
@@ -14,7 +15,17 @@ class BackgroundRenderer {
     this.groundEl = document.getElementById('ground-layer')!;
 
     this.render();
-    window.addEventListener('resize', () => this.render());
+    window.addEventListener('resize', () => this.handleResize());
+  }
+
+  private handleResize() {
+    if (this.resizeTimeout !== undefined) {
+      clearTimeout(this.resizeTimeout);
+    }
+    this.resizeTimeout = window.setTimeout(() => {
+      this.render();
+      this.resizeTimeout = undefined;
+    }, 100); // Debounce resize events
   }
 
   private render() {

@@ -1,5 +1,5 @@
 import { grasslandDayScene } from './grassland-day';
-import type { SceneSpec } from './typs';
+import type { SceneSpec } from './types';
 
 export const SCENE_SPEC_CONFIGS: SceneSpec[] = [
   grasslandDayScene,
@@ -8,4 +8,4 @@ export const SCENE_SPEC_CONFIGS: SceneSpec[] = [
 
 export const DEFAULT_SCENE = grasslandDayScene;
 
-export type { SceneSpec, ProjectionType } from './typs';
+export type { SceneSpec, ProjectionType } from './types';

@@ -1,4 +1,4 @@
-import { SceneSpec } from './typs';
+import { SceneSpec } from './types';
 
 export const grasslandDayScene: SceneSpec = {
   id: 'grassland-day',
@@ -7,7 +7,11 @@ export const grasslandDayScene: SceneSpec = {
 
   background: {
     tileSet: 'grassland',
-    numTile: -1,
+    /**
+     * Number of tiles to render vertically.
+     * Use -1 to indicate dynamic sizing (fill remaining space).
+     */
+    numTile: -1, // -1 means fill remaining space
   },
 
   border: {
