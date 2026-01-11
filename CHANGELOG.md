@@ -45,3 +45,8 @@ Wishing you a great year ahead!
 
 ### Added
 - Added new Mofus (2 cats and 2 ducks)
+
+## [1.0.3] - 2026-01-11
+
+### Added
+- Added new Mofus (2 chameleons)

@@ -94,6 +94,9 @@ Added new Mofus: 3 horses!
 
 Added new Mofus: 2 cats and 2 ducks!
 
+### 1.0.3
+
+Added new Mofus: 2 chameleons!
 
 ## License
 
