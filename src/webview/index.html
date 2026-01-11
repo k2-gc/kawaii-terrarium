@@ -15,10 +15,20 @@
     <title>Kawaii Terrarium</title>
   </head>
   <body>
+    <!-- Background Layer -->
+    <div id="background-container">
+      <div id="background-layer"></div>
+      <div id="border-layer"></div>
+      <div id="ground-layer"></div>
+    </div>
+
+    <!-- Mofu Container -->
     <div id="app"></div>
     <script nonce="{{nonce}}">
       window.mofuConfigs = {{mofuConfigsJson}};
       window.mofuFramesList = {{mofuFramesListJson}};
+      window.sceneConfig = {{sceneConfigJson}};
+      window.sceneTiles = {{sceneTilesJson}};
     </script>
     <script nonce="{{nonce}}" type="module" src="{{jsUri}}"></script>
   </body>

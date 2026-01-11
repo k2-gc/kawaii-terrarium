@@ -1,6 +1,7 @@
 import type { MofuConfig } from '../../../../mofus/types';
 import { AnimationController } from './AnimationController';
 import { MovementController } from './MovementController';
+import { TILE_SIZE } from '../constants';
 
 class Mofu {
   // Constants
@@ -15,7 +16,13 @@ class Mofu {
 
   private activeStateDuration: number = 0;
 
-  constructor(config: MofuConfig, frames: string[], onDismissed: () => void) {
+  constructor(
+    config: MofuConfig,
+    frames: string[],
+    groundTileNum: number,
+    borderTileNum: number,
+    onDismissed: () => void
+  ) {
     this.config = config;
     this.onDismissed = onDismissed;
 
@@ -26,7 +33,17 @@ class Mofu {
     this.element.style.height = 'auto';
     this.element.style.imageRendering = 'pixelated';
     this.element.style.pointerEvents = 'none';
-    this.element.style.bottom = '0px';
+
+    // Calculate vertical offset based on ground and border tiles
+    const groundOffset = TILE_SIZE * groundTileNum;
+    const borderOffset = TILE_SIZE * borderTileNum;
+    /**
+     * Mofu vertical offset calculation:
+     * Expected bottom-half of border height belongs to ground part,
+     * so we add half of borderOffset to groundOffset for correct positioning.
+     */
+    const mofuOffset = groundOffset + Math.floor(borderOffset / 2);
+    this.element.style.bottom = `${mofuOffset}px`;
     document.body.appendChild(this.element);
 
     this.animationController = new AnimationController(

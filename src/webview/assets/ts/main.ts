@@ -1,11 +1,15 @@
 import { Mofu } from './mofus/Mofu';
 import type { MofuConfig } from '../../../mofus/types';
+import { BackgroundRenderer } from './background/BackgroundRenderer';
+import type { SceneSpec } from '../../../scenes/types';
 
-// Extend the Window interface to include mofuConfigs and mofuFramesList
+// Extend the Window interface to include mofuConfigs, mofuFramesList, sceneConfig, and sceneTiles
 declare global {
   interface Window {
     mofuConfigs: MofuConfig[];
     mofuFramesList: string[][];
+    sceneConfig: SceneSpec;
+    sceneTiles: Record<string, string>;
   }
 }
 
@@ -13,10 +17,14 @@ class MofuKeeper {
   private configs: MofuConfig[];
   private framesList: string[][];
   private active: Map<string, Mofu> = new Map();
+  private groundTileNum: number;
+  private borderTileNum: number;
 
-  constructor(configs: MofuConfig[], framesList: string[][]) {
+  constructor(configs: MofuConfig[], framesList: string[][], groundTileNum = 1, borderTileNum = 1) {
     this.configs = configs;
     this.framesList = framesList;
+    this.groundTileNum = groundTileNum;
+    this.borderTileNum = borderTileNum;
     this.summonMofu();
     this.scheduleNextMofu();
   }
@@ -34,7 +42,9 @@ class MofuKeeper {
     const idx = Math.floor(Math.random() * available.length);
     const config = available[idx];
     const frames = this.framesList[this.configs.indexOf(config)];
-    const mofu = new Mofu(config, frames, () => this.handleMofuDismissed(config.id));
+    const mofu = new Mofu(config, frames, this.groundTileNum, this.borderTileNum, () =>
+      this.handleMofuDismissed(config.id)
+    );
     this.active.set(config.id, mofu);
     console.log(`Mofu Summoned: ${config.name} (${config.id})`);
   }
@@ -113,6 +123,8 @@ class MofuKeeper {
 
 const configs = window.mofuConfigs;
 const framesList = window.mofuFramesList;
+const sceneConfig = window.sceneConfig;
+const sceneTiles = window.sceneTiles;
 
 type VsCodeCommandMessage = {
   command: 'dismissAll';
@@ -127,8 +139,13 @@ const isVsCodeCommandMessage = (message: unknown): message is VsCodeCommandMessa
   );
 };
 
-if (configs && framesList) {
-  const keeper = new MofuKeeper(configs, framesList);
+if (configs && framesList && sceneConfig && sceneTiles) {
+  const keeper = new MofuKeeper(
+    configs,
+    framesList,
+    sceneConfig.ground.numTile,
+    sceneConfig.border.numTile
+  );
   console.log('Mofu initialized:', configs.map((c) => c.name).join(', '));
   window.addEventListener('message', (event) => {
     const message = event.data;
@@ -138,4 +155,11 @@ if (configs && framesList) {
   });
 } else {
   console.error('Failed to load mofu config or frames');
+}
+
+try {
+  new BackgroundRenderer(sceneConfig, sceneTiles);
+  console.log('Background initialized:', sceneConfig.name);
+} catch (error) {
+  console.error('Failed to load scene config or tiles', error);
 }
