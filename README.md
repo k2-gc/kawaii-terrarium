@@ -11,14 +11,12 @@ They simply roam around your workspace, bringing relaxation to your coding sessi
 - 🚶 **Smooth animations** - Characters walk around your editor with idle animations
 - ✨ **Random appearances** - Characters randomly appear and disappear
 - 🪟 **Secondary Sidebar support** - Mofu now lives in the right sidebar (secondary sidebar) by default!
-- 🎮 **Easy controls** - Summon or dismiss Mofus via command palette
+- 🎮 **Easy controls** - Summon Mofus via command palette
+- 🌄 **Background scenes** - Enjoy a cute terrarium background behind your Mofus!
 
 ## Demo
 - On Secondary SideBar  
    ![Demo Gif](./media/demo2.gif)
-
-- On panel  
-   ![Demo Gif](./media/demo.gif)
 
 ## What is "Mofu"?
 
@@ -36,8 +34,6 @@ The name perfectly captures these cute, shape-shifting creatures! 🌸
 2. Type "Kawaii Terrarium"
 3. Select:
    - **Summon Mofu on Secondary Sidebar** - Show Mofus in the right sidebar
-   - **Summon Mofu on Panel** - Show cute characters in your editor
-   - **Dismiss Mofu from Panel** - Remove all characters from your editor
 
 ## Installation
 
@@ -61,6 +57,7 @@ Each Mofu can transform into:
 - 🐢 **Turtles** (1 variant)
 - 🫏 **Horses** (3 variants)
 - 🦆 **Ducks** (2 variants)
+- 🦎 **Chameleons** (2 variants)
 
 ## Requirements
 
@@ -97,6 +94,12 @@ Added new Mofus: 2 cats and 2 ducks!
 ### 1.0.3
 
 Added new Mofus: 2 chameleons!
+
+### 1.1.0
+
+- Removed obsolete commands and cleaned up command handling
+- Added background to the terrarium view
+- Improved code structure and maintainability
 
 ## License
 

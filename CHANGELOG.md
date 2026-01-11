@@ -50,3 +50,11 @@ Wishing you a great year ahead!
 
 ### Added
 - Added new Mofus (2 chameleons)
+
+## [1.1.0] - 2026-01-11
+
+### Added
+- Added background to the terrarium view
+
+### Removed
+- Removed obsolete commands

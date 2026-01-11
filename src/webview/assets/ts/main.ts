@@ -74,44 +74,6 @@ class MofuKeeper {
     }
     this.scheduleNextMofu();
   }
-  public dismissAll() {
-    const activeCount = this.active.size;
-    if (activeCount === 0) {
-      this.notifyAllDismissed();
-      return;
-    }
-
-    this.active.forEach((mofu) => {
-      mofu.dismissMofu();
-    });
-
-    // Poll to check if all mofus are dismissed
-    const checkInterval = setInterval(() => {
-      if (this.active.size === 0) {
-        clearInterval(checkInterval);
-        this.notifyAllDismissed();
-      }
-    }, 100);
-
-    // Timeout after 10 seconds
-    setTimeout(() => {
-      clearInterval(checkInterval);
-      if (this.active.size > 0) {
-        console.warn('Some mofus did not dismiss in time');
-        this.notifyAllDismissed();
-      }
-    }, 10000);
-  }
-
-  private notifyAllDismissed() {
-    // @ts-ignore - VSCode API
-    if (typeof acquireVsCodeApi !== 'undefined') {
-      // @ts-ignore
-      const vscode = acquireVsCodeApi();
-      vscode.postMessage({ command: 'allMofusDismissed' });
-      console.log('All mofus dismissed notification sent');
-    }
-  }
 
   private handleMofuDismissed(mofuId: string) {
     if (this.active.has(mofuId)) {
@@ -126,19 +88,6 @@ const framesList = window.mofuFramesList;
 const sceneConfig = window.sceneConfig;
 const sceneTiles = window.sceneTiles;
 
-type VsCodeCommandMessage = {
-  command: 'dismissAll';
-};
-
-const isVsCodeCommandMessage = (message: unknown): message is VsCodeCommandMessage => {
-  return (
-    typeof message === 'object' &&
-    message !== null &&
-    'command' in message &&
-    (message as { command?: unknown }).command === 'dismissAll'
-  );
-};
-
 if (configs && framesList && sceneConfig && sceneTiles) {
   const keeper = new MofuKeeper(
     configs,
@@ -147,12 +96,6 @@ if (configs && framesList && sceneConfig && sceneTiles) {
     sceneConfig.border.numTile
   );
   console.log('Mofu initialized:', configs.map((c) => c.name).join(', '));
-  window.addEventListener('message', (event) => {
-    const message = event.data;
-    if (isVsCodeCommandMessage(message)) {
-      keeper.dismissAll();
-    }
-  });
 } else {
   console.error('Failed to load mofu config or frames');
 }
