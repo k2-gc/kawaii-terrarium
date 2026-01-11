@@ -15,6 +15,8 @@ import { horse2Config } from './horse2';
 import { horse3Config } from './horse3';
 import { duck1Config } from './duck1';
 import { duck2Config } from './duck2';
+import { chameleon1Config } from './chameleon1';
+import { chameleon2Config } from './chameleon2';
 import type { MofuConfig } from './types';
 
 export const MOFU_CONFIGS: MofuConfig[] = [
@@ -35,6 +37,8 @@ export const MOFU_CONFIGS: MofuConfig[] = [
   horse3Config,
   duck1Config,
   duck2Config,
+  chameleon1Config,
+  chameleon2Config,
 ];
 
 export type { AnimationKey, MofuConfig, AnimationFrames } from './types';
