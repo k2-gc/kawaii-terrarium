@@ -58,3 +58,8 @@ Wishing you a great year ahead!
 
 ### Removed
 - Removed obsolete commands
+
+## [1.1.1] - 2026-01-17
+
+### Added
+- Added new Mofus (2 penguins)

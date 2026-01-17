@@ -58,6 +58,7 @@ Each Mofu can transform into:
 - 🫏 **Horses** (3 variants)
 - 🦆 **Ducks** (2 variants)
 - 🦎 **Chameleons** (2 variants)
+- 🐧 **Penguins** (2 variants)
 
 ## Requirements
 
@@ -100,6 +101,10 @@ Added new Mofus: 2 chameleons!
 - Removed obsolete commands and cleaned up command handling
 - Added background to the terrarium view
 - Improved code structure and maintainability
+
+### 1.1.1
+
+Added new Mofus: 2 penguins!
 
 ## License
 
