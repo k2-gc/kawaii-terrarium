@@ -19,6 +19,8 @@ import { chameleon1Config } from './chameleon1';
 import { chameleon2Config } from './chameleon2';
 import { penguin1Config } from './penguin1';
 import { penguin2Config } from './penguin2';
+import { penguin3Config } from './penguin3';
+import { penguin4Config } from './penguin4';
 import type { MofuConfig } from './types';
 
 export const MOFU_CONFIGS: MofuConfig[] = [
@@ -43,6 +45,8 @@ export const MOFU_CONFIGS: MofuConfig[] = [
   chameleon2Config,
   penguin1Config,
   penguin2Config,
+  penguin3Config,
+  penguin4Config,
 ];
 
 export type { AnimationKey, MofuConfig, AnimationFrames } from './types';
