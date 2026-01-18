@@ -7,7 +7,7 @@ They simply roam around your workspace, bringing relaxation to your coding sessi
 
 ## Features
 
-- 🐱 **Adorable animated characters** - Cats, squirrels, hedgehogs, and elephants
+- 🐱 **Adorable animated characters** - Cats, squirrels, hedgehogs, and so on
 - 🚶 **Smooth animations** - Characters walk around your editor with idle animations
 - ✨ **Random appearances** - Characters randomly appear and disappear
 - 🪟 **Secondary Sidebar support** - Mofu now lives in the right sidebar (secondary sidebar) by default!
@@ -58,7 +58,7 @@ Each Mofu can transform into:
 - 🫏 **Horses** (3 variants)
 - 🦆 **Ducks** (2 variants)
 - 🦎 **Chameleons** (2 variants)
-- 🐧 **Penguins** (2 variants)
+- 🐧 **Penguins** (4 variants)
 
 ## Requirements
 
@@ -105,6 +105,11 @@ Added new Mofus: 2 chameleons!
 ### 1.1.1
 
 Added new Mofus: 2 penguins!
+
+### 1.1.2
+
+Added new Mofus: 2 more penguins!
+Fixed 1 penguin sprite!
 
 ## License
 
