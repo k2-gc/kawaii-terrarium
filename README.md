@@ -57,7 +57,7 @@ Each Mofu can transform into:
 - 🐢 **Turtles** (1 variant)
 - 🫏 **Horses** (3 variants)
 - 🦆 **Ducks** (2 variants)
-- 🦎 **Chameleons** (2 variants)
+- 🦎 **Chameleons** (4 variants)
 - 🐧 **Penguins** (4 variants)
 
 ## Requirements
@@ -110,6 +110,11 @@ Added new Mofus: 2 penguins!
 
 Added new Mofus: 2 more penguins!
 Fixed 1 penguin sprite!
+
+### 1.1.3
+
+Added new Mofus: 2 more chameleons!
+
 
 ## License
 

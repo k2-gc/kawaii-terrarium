@@ -68,3 +68,7 @@ Wishing you a great year ahead!
 
 Added new Mofus: 2 more penguins!
 Fixed 1 penguin sprite!
+
+### [1.1.3] - 2026-01-24
+
+Added new Mofus: 2 more chameleons!
