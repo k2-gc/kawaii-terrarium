@@ -17,6 +17,8 @@ import { duck1Config } from './duck1';
 import { duck2Config } from './duck2';
 import { chameleon1Config } from './chameleon1';
 import { chameleon2Config } from './chameleon2';
+import { chameleon3Config } from './chameleon3';
+import { chameleon4Config } from './chameleon4';
 import { penguin1Config } from './penguin1';
 import { penguin2Config } from './penguin2';
 import { penguin3Config } from './penguin3';
@@ -43,6 +45,8 @@ export const MOFU_CONFIGS: MofuConfig[] = [
   duck2Config,
   chameleon1Config,
   chameleon2Config,
+  chameleon3Config,
+  chameleon4Config,
   penguin1Config,
   penguin2Config,
   penguin3Config,
