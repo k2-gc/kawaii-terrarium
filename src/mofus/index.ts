@@ -23,6 +23,8 @@ import { penguin1Config } from './penguin1';
 import { penguin2Config } from './penguin2';
 import { penguin3Config } from './penguin3';
 import { penguin4Config } from './penguin4';
+import { fox1Config } from './fox1';
+import { fox2Config } from './fox2';
 import type { MofuConfig } from './types';
 
 export const MOFU_CONFIGS: MofuConfig[] = [
@@ -51,6 +53,8 @@ export const MOFU_CONFIGS: MofuConfig[] = [
   penguin2Config,
   penguin3Config,
   penguin4Config,
+  fox1Config,
+  fox2Config,
 ];
 
 export type { AnimationKey, MofuConfig, AnimationFrames } from './types';
