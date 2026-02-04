@@ -61,7 +61,7 @@ Each Mofu can transform into:
 - 🐧 **Penguins** (4 variants)
 - 🦊 **Foxes** (2 variants)
 
-## Animal Encyclopedia
+## Mofu Book
 ### Cats
 <img src="media/mofus/cat1/frame_000.png"  width="160"/> 
 <img src="media/mofus/cat2/frame_000.png"  width="160"/>
