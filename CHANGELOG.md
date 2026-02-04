@@ -72,3 +72,8 @@ Fixed 1 penguin sprite!
 ### [1.1.3] - 2026-01-24
 
 Added new Mofus: 2 more chameleons!
+
+### [1.1.4] - 2026-02-04
+
+Added new Mofus: 2 foxes!
+Added Mofu's sample image on README!

@@ -59,6 +59,58 @@ Each Mofu can transform into:
 - 🦆 **Ducks** (2 variants)
 - 🦎 **Chameleons** (4 variants)
 - 🐧 **Penguins** (4 variants)
+- 🦊 **Foxes** (2 variants)
+
+## Animal Encyclopedia
+### Cats
+<img src="media/mofus/cat1/frame_000.png"  width="160"/> 
+<img src="media/mofus/cat2/frame_000.png"  width="160"/>
+<img src="media/mofus/cat3/frame_000.png"  width="160"/> 
+<img src="media/mofus/cat4/frame_000.png"  width="160"/> 
+
+### Squirrels
+<img src="media/mofus/squirrel1/frame_000.png"  width="160"/>
+<img src="media/mofus/squirrel2/frame_000.png"  width="160"/>
+
+### Hedgehogs
+<img src="media/mofus/hedgehog1/frame_000.png"  width="160"/>
+<img src="media/mofus/hedgehog2/frame_000.png"  width="160"/>
+
+### Elephants
+<img src="media/mofus/elephant1/frame_000.png"  width="160"/>
+<img src="media/mofus/elephant2/frame_000.png"  width="160"/>
+
+### Tortoises
+<img src="media/mofus/tortoise1/frame_003.png"  width="160"/>
+
+### Turtles
+<img src="media/mofus/turtle1/frame_003.png"  width="160"/>
+
+### Horses
+<img src="media/mofus/horse1/frame_000.png"  width="160"/>
+<img src="media/mofus/horse2/frame_000.png"  width="160"/>
+<img src="media/mofus/horse3/frame_000.png"  width="160"/>
+
+### Ducks
+<img src="media/mofus/duck1/frame_000.png"  width="160"/>
+<img src="media/mofus/duck2/frame_000.png"  width="160"/>
+
+### Chameleons
+<img src="media/mofus/chameleon1/frame_000.png"  width="160"/>
+<img src="media/mofus/chameleon2/frame_000.png"  width="160"/>
+<img src="media/mofus/chameleon3/frame_010.png"  width="160"/>
+<img src="media/mofus/chameleon4/frame_010.png"  width="160"/>
+
+### Penguins
+<img src="media/mofus/penguin1/frame_006.png"  width="160"/>
+<img src="media/mofus/penguin2/frame_006.png"  width="160"/>
+<img src="media/mofus/penguin3/frame_006.png"  width="160"/>
+<img src="media/mofus/penguin4/frame_006.png"  width="160"/>
+
+### Foxes
+<img src="media/mofus/fox1/frame_000.png"  width="160"/>
+<img src="media/mofus/fox2/frame_000.png"  width="160"/> 
+
 
 ## Requirements
 
@@ -114,6 +166,11 @@ Fixed 1 penguin sprite!
 ### 1.1.3
 
 Added new Mofus: 2 more chameleons!
+
+### 1.1.4
+
+Added new Mofus: 2 foxes!
+Added Mofu's sample image on README!
 
 
 ## License
