@@ -5,7 +5,7 @@ export const grasslandDayScene: SceneSpec = {
   name: 'Grassland (Day)',
   projection: 'side',
 
-  background: {
+  field: {
     tileSet: 'grassland',
     /**
      * Number of tiles to render vertically.
@@ -14,7 +14,7 @@ export const grasslandDayScene: SceneSpec = {
     numTile: -1, // -1 means fill remaining space
   },
 
-  border: {
+  groundEdge: {
     tileSet: 'grassland-ground',
     numTile: 1,
   },
