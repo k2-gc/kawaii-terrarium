@@ -11,7 +11,7 @@ const htmlTemplateCache = new Map<string, string>();
 
 const getWebviewHtml = async (
   webview: vscode.Webview,
-  extensionUri: vscode.Uri
+  extensionUri: vscode.Uri,
 ): Promise<string> => {
   const template = await loadHtmlTemplate(extensionUri);
   if (!template) {
@@ -26,7 +26,7 @@ const getWebviewHtml = async (
 
     const mofuConfigs = MOFU_CONFIGS;
     const mofuFramesList = mofuConfigs.map((config) =>
-      loadMofuFrames(webview, extensionUri, config.id, config.frameCount)
+      loadMofuFrames(webview, extensionUri, config.id, config.frameCount),
     );
 
     const sceneConfig = DEFAULT_SCENE;
@@ -80,7 +80,7 @@ const loadMofuFrames = (
   webview: vscode.Webview,
   extensionUri: vscode.Uri,
   mofuId: string,
-  frameCount: number
+  frameCount: number,
 ): string[] => {
   return Array.from({ length: frameCount }, (_, i) =>
     webview
@@ -90,32 +90,32 @@ const loadMofuFrames = (
           'media',
           'mofus',
           mofuId,
-          `frame_${String(i).padStart(3, '0')}.png`
-        )
+          `frame_${String(i).padStart(3, '0')}.png`,
+        ),
       )
-      .toString()
+      .toString(),
   );
 };
 
 const loadSceneTiles = (
   webview: vscode.Webview,
   extensionUri: vscode.Uri,
-  scene: SceneSpec
+  scene: SceneSpec,
 ): Record<string, string> => {
   const sceneFolder = scene.id;
 
   const getTileUri = (tileSet: string): string => {
     const uri = webview
       .asWebviewUri(
-        vscode.Uri.joinPath(extensionUri, 'media', 'background', sceneFolder, `${tileSet}.png`)
+        vscode.Uri.joinPath(extensionUri, 'media', 'background', sceneFolder, `${tileSet}.png`),
       )
       .toString();
     return uri;
   };
 
   return {
-    background: getTileUri(scene.background.tileSet),
-    border: getTileUri(scene.border.tileSet),
+    background: getTileUri(scene.field.tileSet),
+    border: getTileUri(scene.groundEdge.tileSet),
     ground: getTileUri(scene.ground.tileSet),
   };
 };

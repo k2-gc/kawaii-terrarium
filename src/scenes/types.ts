@@ -6,12 +6,12 @@ export interface SceneSpec {
   name: string;
   projection: ProjectionType;
 
-  background: {
+  field: {
     tileSet: string;
     numTile: number | -1;
   };
 
-  border: {
+  groundEdge: {
     tileSet: string;
     numTile: number;
   };

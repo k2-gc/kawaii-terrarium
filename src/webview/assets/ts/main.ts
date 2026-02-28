@@ -43,7 +43,7 @@ class MofuKeeper {
     const config = available[idx];
     const frames = this.framesList[this.configs.indexOf(config)];
     const mofu = new Mofu(config, frames, this.groundTileNum, this.borderTileNum, () =>
-      this.handleMofuDismissed(config.id)
+      this.handleMofuDismissed(config.id),
     );
     this.active.set(config.id, mofu);
     console.log(`Mofu Summoned: ${config.name} (${config.id})`);
@@ -93,7 +93,7 @@ if (configs && framesList && sceneConfig && sceneTiles) {
     configs,
     framesList,
     sceneConfig.ground.numTile,
-    sceneConfig.border.numTile
+    sceneConfig.groundEdge.numTile,
   );
   console.log('Mofu initialized:', configs.map((c) => c.name).join(', '));
 } else {

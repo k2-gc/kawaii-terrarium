@@ -17,7 +17,10 @@ class BackgroundRenderer {
   private groundEl: HTMLElement;
   private resizeTimeout: number | undefined;
 
-  constructor(private scene: SceneSpec, private tiles: Record<string, string>) {
+  constructor(
+    private scene: SceneSpec,
+    private tiles: Record<string, string>,
+  ) {
     this.backgroundEl = BackgroundRenderer.getRequiredElement('background-layer');
     this.borderEl = BackgroundRenderer.getRequiredElement('border-layer');
     this.groundEl = BackgroundRenderer.getRequiredElement('ground-layer');
@@ -41,9 +44,9 @@ class BackgroundRenderer {
     const tileSize = BackgroundRenderer.TILE_SIZE;
 
     const groundHeight = tileSize * this.scene.ground.numTile;
-    const borderHeight = tileSize * this.scene.border.numTile;
+    const borderHeight = tileSize * this.scene.groundEdge.numTile;
 
-    const backgroundTileNum = this.scene.background.numTile;
+    const backgroundTileNum = this.scene.field.numTile;
     // When background.numTile is -1 (or undefined), use dynamic sizing based on available height.
     // Otherwise, treat background.numTile as the explicit number of tiles.
     const backgroundHeight =
