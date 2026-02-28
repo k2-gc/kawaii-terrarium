@@ -114,8 +114,8 @@ const loadSceneTiles = (
   };
 
   return {
-    background: getTileUri(scene.field.tileSet),
-    border: getTileUri(scene.groundEdge.tileSet),
+    field: getTileUri(scene.field.tileSet),
+    groundEdge: getTileUri(scene.groundEdge.tileSet),
     ground: getTileUri(scene.ground.tileSet),
   };
 };

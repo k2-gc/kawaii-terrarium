@@ -12,8 +12,8 @@ class BackgroundRenderer {
     return element;
   }
 
-  private backgroundEl: HTMLElement;
-  private borderEl: HTMLElement;
+  private fieldEl: HTMLElement;
+  private groundEdgeEl: HTMLElement;
   private groundEl: HTMLElement;
   private resizeTimeout: number | undefined;
 
@@ -21,8 +21,8 @@ class BackgroundRenderer {
     private scene: SceneSpec,
     private tiles: Record<string, string>,
   ) {
-    this.backgroundEl = BackgroundRenderer.getRequiredElement('background-layer');
-    this.borderEl = BackgroundRenderer.getRequiredElement('border-layer');
+    this.fieldEl = BackgroundRenderer.getRequiredElement('field-layer');
+    this.groundEdgeEl = BackgroundRenderer.getRequiredElement('ground-edge-layer');
     this.groundEl = BackgroundRenderer.getRequiredElement('ground-layer');
 
     this.render();
@@ -44,35 +44,35 @@ class BackgroundRenderer {
     const tileSize = BackgroundRenderer.TILE_SIZE;
 
     const groundHeight = tileSize * this.scene.ground.numTile;
-    const borderHeight = tileSize * this.scene.groundEdge.numTile;
+    const groundEdgeHeight = tileSize * this.scene.groundEdge.numTile;
 
-    const backgroundTileNum = this.scene.field.numTile;
-    // When background.numTile is -1 (or undefined), use dynamic sizing based on available height.
-    // Otherwise, treat background.numTile as the explicit number of tiles.
-    const backgroundHeight =
-      backgroundTileNum === -1 || backgroundTileNum === undefined
-        ? Math.max(0, panelHeight - groundHeight - borderHeight + PIXEL_GAP_FIX)
-        : Math.max(0, tileSize * backgroundTileNum);
+    const fieldTileNum = this.scene.field.numTile;
+    // When field.numTile is -1 (or undefined), use dynamic sizing based on available height.
+    // Otherwise, treat field.numTile as the explicit number of tiles.
+    const fieldHeight =
+      fieldTileNum === -1 || fieldTileNum === undefined
+        ? Math.max(0, panelHeight - groundHeight - groundEdgeHeight + PIXEL_GAP_FIX)
+        : Math.max(0, tileSize * fieldTileNum);
 
     const groundBottom = 0;
-    const borderBottom = groundBottom + groundHeight + LAYER_STACK_OFFSET;
-    const backgroundBottom = borderBottom + borderHeight + LAYER_STACK_OFFSET;
+    const groundEdgeBottom = groundBottom + groundHeight + LAYER_STACK_OFFSET;
+    const fieldBottom = groundEdgeBottom + groundEdgeHeight + LAYER_STACK_OFFSET;
 
     // Ground Layer Configuration
     this.groundEl.style.height = `${groundHeight}px`;
     this.groundEl.style.bottom = `${groundBottom}px`;
 
-    // Border Layer Configuration
-    this.borderEl.style.height = `${borderHeight}px`;
-    this.borderEl.style.bottom = `${borderBottom}px`;
+    // GroundEdge Layer Configuration
+    this.groundEdgeEl.style.height = `${groundEdgeHeight}px`;
+    this.groundEdgeEl.style.bottom = `${groundEdgeBottom}px`;
 
-    // Background Layer Configuration
-    this.backgroundEl.style.height = `${backgroundHeight}px`;
-    this.backgroundEl.style.bottom = `${backgroundBottom}px`;
+    // Field Layer Configuration
+    this.fieldEl.style.height = `${fieldHeight}px`;
+    this.fieldEl.style.bottom = `${fieldBottom}px`;
 
-    this.renderGroundLayer(this.borderEl, this.tiles.border);
-    this.renderBorderLayer(this.groundEl, this.tiles.ground);
-    this.renderBackgroundLayer(this.backgroundEl, this.tiles.background);
+    this.renderGroundEdgeLayer(this.groundEdgeEl, this.tiles.groundEdge);
+    this.renderGroundLayer(this.groundEl, this.tiles.ground);
+    this.renderFieldLayer(this.fieldEl, this.tiles.field);
   }
 
   // For scalability, each layer rendering is separated into its own method
@@ -83,14 +83,14 @@ class BackgroundRenderer {
     element.style.backgroundPosition = 'bottom left';
   }
 
-  private renderBorderLayer(element: HTMLElement, imageUrl: string) {
+  private renderGroundEdgeLayer(element: HTMLElement, imageUrl: string) {
     element.style.backgroundImage = `url(${imageUrl})`;
     element.style.backgroundRepeat = 'repeat-x';
     element.style.backgroundSize = `${BackgroundRenderer.TILE_SIZE}px ${BackgroundRenderer.TILE_SIZE}px`;
     element.style.backgroundPosition = 'bottom left';
   }
 
-  private renderBackgroundLayer(element: HTMLElement, imageUrl: string) {
+  private renderFieldLayer(element: HTMLElement, imageUrl: string) {
     element.style.backgroundImage = `url(${imageUrl})`;
     element.style.backgroundRepeat = 'repeat';
     element.style.backgroundSize = `${BackgroundRenderer.TILE_SIZE}px ${BackgroundRenderer.TILE_SIZE}px`;

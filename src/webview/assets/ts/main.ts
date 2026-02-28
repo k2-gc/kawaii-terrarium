@@ -18,13 +18,13 @@ class MofuKeeper {
   private framesList: string[][];
   private active: Map<string, Mofu> = new Map();
   private groundTileNum: number;
-  private borderTileNum: number;
+  private groundEdgeTileNum: number;
 
-  constructor(configs: MofuConfig[], framesList: string[][], groundTileNum = 1, borderTileNum = 1) {
+  constructor(configs: MofuConfig[], framesList: string[][], groundTileNum = 1, groundEdgeTileNum = 1) {
     this.configs = configs;
     this.framesList = framesList;
     this.groundTileNum = groundTileNum;
-    this.borderTileNum = borderTileNum;
+    this.groundEdgeTileNum = groundEdgeTileNum;
     this.summonMofu();
     this.scheduleNextMofu();
   }
@@ -42,7 +42,7 @@ class MofuKeeper {
     const idx = Math.floor(Math.random() * available.length);
     const config = available[idx];
     const frames = this.framesList[this.configs.indexOf(config)];
-    const mofu = new Mofu(config, frames, this.groundTileNum, this.borderTileNum, () =>
+    const mofu = new Mofu(config, frames, this.groundTileNum, this.groundEdgeTileNum, () =>
       this.handleMofuDismissed(config.id),
     );
     this.active.set(config.id, mofu);

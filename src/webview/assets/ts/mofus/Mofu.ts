@@ -20,8 +20,8 @@ class Mofu {
     config: MofuConfig,
     frames: string[],
     groundTileNum: number,
-    borderTileNum: number,
-    onDismissed: () => void
+    groundEdgeTileNum: number,
+    onDismissed: () => void,
   ) {
     this.config = config;
     this.onDismissed = onDismissed;
@@ -34,15 +34,15 @@ class Mofu {
     this.element.style.imageRendering = 'pixelated';
     this.element.style.pointerEvents = 'none';
 
-    // Calculate vertical offset based on ground and border tiles
+    // Calculate vertical offset based on ground and groundEdge tiles
     const groundOffset = TILE_SIZE * groundTileNum;
-    const borderOffset = TILE_SIZE * borderTileNum;
+    const groundEdgeOffset = TILE_SIZE * groundEdgeTileNum;
     /**
      * Mofu vertical offset calculation:
-     * Expected bottom-half of border height belongs to ground part,
-     * so we add half of borderOffset to groundOffset for correct positioning.
+     * Expected bottom-half of groundEdge height belongs to ground part,
+     * so we add half of groundEdgeOffset to groundOffset for correct positioning.
      */
-    const mofuOffset = groundOffset + Math.floor(borderOffset / 2);
+    const mofuOffset = groundOffset + Math.floor(groundEdgeOffset / 2);
     this.element.style.bottom = `${mofuOffset}px`;
     document.body.appendChild(this.element);
 
@@ -52,7 +52,7 @@ class Mofu {
         animationSpeeds: config.animationSpeeds,
         frames: frames,
       },
-      this.element
+      this.element,
     );
 
     this.movementController = new MovementController(
@@ -61,7 +61,7 @@ class Mofu {
         initialDirection: this.config.direction,
         walkSpeed: this.config.animationSpeeds.walk || 0.2,
       },
-      this.element
+      this.element,
     );
 
     this.animationController.startGreetingIn();

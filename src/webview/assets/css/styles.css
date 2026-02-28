@@ -27,8 +27,8 @@ body {
   z-index: -1; /* Behind Mofu */
 }
 
-#background-layer,
-#border-layer,
+#field-layer,
+#ground-edge-layer,
 #ground-layer {
   position: absolute;
   left: 0;
@@ -36,12 +36,12 @@ body {
   image-rendering: pixelated;
 }
 
-#background-layer {
+#field-layer {
   top: 0;
   /* height will be set dynamically by JS */
 }
 
-#border-layer,
+#ground-edge-layer,
 #ground-layer {
   bottom: 0;
   /* height will be set dynamically by JS */
