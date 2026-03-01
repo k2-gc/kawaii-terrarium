@@ -2,7 +2,7 @@
   "name": "kawaii-terrarium",
   "displayName": "Kawaii Terrarium",
   "description": "Cute Mofu characters living in your VS Code editor",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "publisher": "k2-gc",
   "icon": "media/logo/icon.png",
   "license": "SEE LICENSE IN LICENSE",
@@ -14,7 +14,15 @@
     "url": "https://github.com/k2-gc/kawaii-terrarium/issues"
   },
   "homepage": "https://github.com/k2-gc/kawaii-terrarium",
-  "keywords": ["pet", "cute", "terrarium", "fun", "animation", "kawaii", "mofu"],
+  "keywords": [
+    "pet",
+    "cute",
+    "terrarium",
+    "fun",
+    "animation",
+    "kawaii",
+    "mofu"
+  ],
   "engines": {
     "vscode": "^1.107.0"
   },
