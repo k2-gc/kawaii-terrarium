@@ -9,3 +9,5 @@ test/
 
 .vscode-test.mjs
 vsc-extension-quickstart.md
+
+docs/

@@ -17,3 +17,5 @@ esbuild.js
 
 # test
 out/test/
+
+docs/
