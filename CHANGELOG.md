@@ -90,3 +90,7 @@ Added Mofu's sample image on README!
 ### [1.1.5] - 2026-03-01
 
 Refactored variables in some files
+
+### [1.1.6] - 2026-03-15
+
+Added new Mofus: 2 more penguins!

@@ -122,6 +122,8 @@ Each Mofu can transform into:
 <img src="media/mofus/penguin2/frame_006.png"  width="160"/>
 <img src="media/mofus/penguin3/frame_006.png"  width="160"/>
 <img src="media/mofus/penguin4/frame_006.png"  width="160"/>
+<img src="media/mofus/penguin5/frame_006.png"  width="160"/>
+<img src="media/mofus/penguin6/frame_006.png"  width="160"/>
 
 ### Foxes
 
