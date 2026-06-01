@@ -94,3 +94,7 @@ Refactored variables in some files
 ### [1.1.6] - 2026-03-15
 
 Added new Mofus: 2 more penguins!
+
+### [1.1.7] - 2026-06-02
+
+Added new Mofu: Chicken!

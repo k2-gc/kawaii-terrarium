@@ -130,6 +130,10 @@ Each Mofu can transform into:
 <img src="media/mofus/fox1/frame_000.png"  width="160"/>
 <img src="media/mofus/fox2/frame_000.png"  width="160"/>
 
+### Chicken
+
+<img src="media/mofus/chicken1/frame_004.png"  width="160"/>
+
 ## Requirements
 
 - Visual Studio Code ^1.107.0
