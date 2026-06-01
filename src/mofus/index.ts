@@ -27,6 +27,7 @@ import { penguin5Config } from './penguin5';
 import { penguin6Config } from './penguin6';
 import { fox1Config } from './fox1';
 import { fox2Config } from './fox2';
+import { chicken1Config } from './chicken1';
 import type { MofuConfig } from './types';
 
 export const MOFU_CONFIGS: MofuConfig[] = [
@@ -59,6 +60,7 @@ export const MOFU_CONFIGS: MofuConfig[] = [
   penguin6Config,
   fox1Config,
   fox2Config,
+  chicken1Config,
 ];
 
 export type { AnimationKey, MofuConfig, AnimationFrames } from './types';
