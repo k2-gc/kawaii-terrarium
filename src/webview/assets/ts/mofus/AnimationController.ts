@@ -5,7 +5,7 @@ type AnimationState = 'greeting-in' | 'active' | 'greeting-out' | 'hidden';
 interface AnimationControllerConfig {
   animations: AnimationFrames;
   animationSpeeds: Partial<Record<AnimationKey, number>>;
-  frames: string[];
+  frameElements: HTMLImageElement[];
 }
 
 class AnimationController {
@@ -15,19 +15,18 @@ class AnimationController {
 
   private animations: AnimationFrames;
   private animationSpeeds: Partial<Record<AnimationKey, number>>;
-  private frames: string[];
-  private element: HTMLImageElement;
+  private frameElements: HTMLImageElement[];
 
   private currentAnimation: AnimationKey = 'greeting';
   private currentAnimationFrames: number[] = [];
   private currentFrameIndex: number = 0;
   private state: AnimationState = 'greeting-in';
+  private visibleFrame: HTMLImageElement | undefined;
 
-  constructor(config: AnimationControllerConfig, element: HTMLImageElement) {
+  constructor(config: AnimationControllerConfig) {
     this.animations = config.animations;
     this.animationSpeeds = config.animationSpeeds;
-    this.frames = config.frames;
-    this.element = element;
+    this.frameElements = config.frameElements;
   }
 
   public startGreetingIn = () => {
@@ -96,14 +95,26 @@ class AnimationController {
     this.selectRandomIdleAnimation();
   };
 
+  private showFrame = (frameNumber: number) => {
+    const nextFrame = this.frameElements[frameNumber];
+    if (!nextFrame || nextFrame === this.visibleFrame) {
+      return;
+    }
+    if (this.visibleFrame) {
+      this.visibleFrame.style.display = 'none';
+    }
+    nextFrame.style.display = 'block';
+    this.visibleFrame = nextFrame;
+  };
+
   public updateFrame = () => {
     if (this.currentAnimationFrames.length === 0) {
-      this.element.src = this.frames[0];
+      this.showFrame(0);
       return true;
     }
 
     const frameNumber = this.currentAnimationFrames[Math.floor(this.currentFrameIndex)];
-    this.element.src = this.frames[frameNumber];
+    this.showFrame(frameNumber);
 
     const action = this.currentAnimation;
     const frameSpeed = this.animationSpeeds?.[action] || AnimationController.DEFAULT_FRAME_SPEED;
