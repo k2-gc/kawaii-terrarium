@@ -1,6 +1,7 @@
 import type { MofuConfig } from '../../../../mofus/types';
 import { AnimationController } from './AnimationController';
 import { MovementController } from './MovementController';
+import { getFrameElements, waitForFrames } from './FrameLoader';
 import { TILE_SIZE } from '../constants';
 
 class Mofu {
@@ -9,7 +10,7 @@ class Mofu {
   private static readonly MAX_ACTIVE_DURATION_MS = 180000; // 3 minutes
 
   private config: MofuConfig;
-  private element: HTMLImageElement;
+  private element: HTMLDivElement;
   private animationController: AnimationController;
   private movementController: MovementController;
   private onDismissed: () => void;
@@ -26,13 +27,15 @@ class Mofu {
     this.config = config;
     this.onDismissed = onDismissed;
 
-    // Create Image Element
-    this.element = document.createElement('img');
+    // Every frame lives in the DOM as its own image; only one is shown at a time
+    const frameElements = getFrameElements(frames);
+
+    // Create Container Element
+    this.element = document.createElement('div');
     this.element.style.position = 'absolute';
     this.element.style.width = `${this.config.width}px`;
-    this.element.style.height = 'auto';
-    this.element.style.imageRendering = 'pixelated';
     this.element.style.pointerEvents = 'none';
+    frameElements.forEach((frame) => this.element.appendChild(frame));
 
     // Calculate vertical offset based on ground and groundEdge tiles
     const groundOffset = TILE_SIZE * groundTileNum;
@@ -46,14 +49,11 @@ class Mofu {
     this.element.style.bottom = `${mofuOffset}px`;
     document.body.appendChild(this.element);
 
-    this.animationController = new AnimationController(
-      {
-        animations: config.animations,
-        animationSpeeds: config.animationSpeeds,
-        frames: frames,
-      },
-      this.element,
-    );
+    this.animationController = new AnimationController({
+      animations: config.animations,
+      animationSpeeds: config.animationSpeeds,
+      frameElements: frameElements,
+    });
 
     this.movementController = new MovementController(
       {
@@ -65,7 +65,12 @@ class Mofu {
     );
 
     this.animationController.startGreetingIn();
-    this.animate();
+    /**
+     * Wait for every frame before animating. A Mofu that starts moving while
+     * its frames are still loading shows whichever frame loaded first until the
+     * rest arrive, which reads as a walking Mofu stuck on its idle sprite.
+     */
+    waitForFrames(frameElements).then(this.animate);
   }
 
   private animate = () => {

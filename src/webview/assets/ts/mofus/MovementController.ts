@@ -11,7 +11,7 @@ class MovementController {
   private static readonly MIN_DIRECTION_CHANGE_MS = 2000;
   private static readonly MAX_DIRECTION_CHANGE_MS = 7000;
 
-  private element: HTMLImageElement;
+  private element: HTMLElement;
   private width: number;
   private initialDirection: MoveDirection;
 
@@ -20,7 +20,7 @@ class MovementController {
   private moveDirection: MoveDirection = 'right';
   private nextDirectionChangeAt: number = 0;
 
-  constructor(config: MovementControllerConfig, element: HTMLImageElement) {
+  constructor(config: MovementControllerConfig, element: HTMLElement) {
     this.width = config.width;
     this.initialDirection = config.initialDirection;
     this.speed = config.walkSpeed || MovementController.DEFAULT_WALK_SPEED;
