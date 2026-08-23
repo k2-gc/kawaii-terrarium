@@ -101,7 +101,5 @@ Added new Mofu: Chicken!
 
 ### [1.1.8] - 2026-08-23
 
-### [1.1.8] - 2026-08-23
-
 Fixed Mofus walking sideways while still facing front (the squirrels were hit worst).
 Sprite frames are now preloaded, so animations look right from the very first summon!
