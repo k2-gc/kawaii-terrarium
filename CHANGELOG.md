@@ -103,3 +103,11 @@ Added new Mofu: Chicken!
 
 Fixed Mofus walking sideways while still facing front (the squirrels were hit worst).
 Sprite frames are now preloaded, so animations look right from the very first summon!
+
+### [1.1.9] - 2026-11-08
+
+Fixed Mofus moving and animating too fast on high refresh rate displays (120Hz and up): their speed no longer depends on the refresh rate.
+Sprite animations now follow their configured speed exactly, so squirrels and one hedgehog walk a little more briskly than before on 60Hz.
+The terrarium never stays empty anymore: when the last Mofu leaves, a new one arrives right away.
+Ducks no longer flash their greeting pose between walks.
+Updated the character list in the README (6 penguins and the chicken were missing).
