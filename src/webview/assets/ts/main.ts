@@ -69,16 +69,24 @@ class MofuKeeper {
     if (available.length > 0 && Math.random() < shouldSummon) {
       this.summonMofu();
     } else if (activeIds.length > 2) {
-      // Ensure at least one mofu remains
+      // Keeper-initiated exits only happen while 3+ Mofus are around, so at least 2 stay.
+      // Mofus also leave on their own (see Mofu's MAX_ACTIVE_DURATION_MS); when the last one
+      // does, handleMofuDismissed summons a replacement so the terrarium never looks empty.
       this.dismissMofu();
     }
     this.scheduleNextMofu();
   }
 
   private handleMofuDismissed(mofuId: string) {
-    if (this.active.has(mofuId)) {
-      this.active.delete(mofuId);
-      console.log(`Mofu Dismissed: ${mofuId}`);
+    if (!this.active.delete(mofuId)) {
+      return;
+    }
+    console.log(`Mofu Dismissed: ${mofuId}`);
+
+    if (this.active.size === 0) {
+      // The terrarium just became empty. Summon a replacement right away instead of
+      // waiting up to ~23s for the next tick, which may also decide not to summon.
+      this.summonMofu();
     }
   }
 }
