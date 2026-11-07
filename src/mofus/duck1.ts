@@ -9,7 +9,6 @@ export const duck1Config: MofuConfig = {
   animations: {
     greeting: [0, 1, 0, 1],
     walk: [2, 3, 4, 5],
-    idleFront: [],
   },
   direction: 'left',
   animationSpeeds: {

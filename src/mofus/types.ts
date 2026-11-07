@@ -14,6 +14,11 @@ interface MofuConfig extends SpriteConfig {
   name: string;
   animations: AnimationFrames;
   direction: Direction;
+  /**
+   * Frames advanced per 60Hz reference frame for each animation; `walk` is also
+   * the horizontal speed in px per reference frame. The webview scales these by
+   * the real elapsed time, so they mean the same thing on every refresh rate.
+   */
   animationSpeeds: Partial<Record<AnimationKey, number>>;
 }
 

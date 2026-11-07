@@ -13,6 +13,9 @@ class AnimationController {
   private static readonly IDLE_DIRECTION_PROBABILITY = 0.5;
   private static readonly DEFAULT_FRAME_SPEED = 0.1;
 
+  private static hasFrames = (frames: number[] | undefined): frames is number[] =>
+    Array.isArray(frames) && frames.length > 0;
+
   private animations: AnimationFrames;
   private animationSpeeds: Partial<Record<AnimationKey, number>>;
   private frameElements: HTMLImageElement[];
@@ -22,6 +25,12 @@ class AnimationController {
   private currentFrameIndex: number = 0;
   private state: AnimationState = 'greeting-in';
   private visibleFrame: HTMLImageElement | undefined;
+  /**
+   * Time (in reference frames) that overshot the end of the last animation cycle.
+   * It is applied on the next step so that cycle boundaries, and the index resets
+   * done by setAnimation() after every cycle, do not silently drop elapsed time.
+   */
+  private carriedFrames: number = 0;
 
   constructor(config: AnimationControllerConfig) {
     this.animations = config.animations;
@@ -65,7 +74,7 @@ class AnimationController {
       this.animations.idleFront,
       this.animations.idleBack,
       this.animations.walk,
-    ].filter((frames): frames is number[] => Array.isArray(frames) && frames.length > 0);
+    ].filter(AnimationController.hasFrames);
 
     if (candidateFrames.length === 0) {
       this.currentAnimationFrames = [0];
@@ -74,12 +83,16 @@ class AnimationController {
       return;
     }
 
-    if (this.animations.idleFront && this.animations.idleBack) {
+    // An empty frame list (e.g. `idleFront: []`) counts as "no idle animation";
+    // selecting it would show the greeting sprite and drop that step's elapsed time.
+    const hasIdleFront = AnimationController.hasFrames(this.animations.idleFront);
+    const hasIdleBack = AnimationController.hasFrames(this.animations.idleBack);
+    if (hasIdleFront && hasIdleBack) {
       const useIdleFront = Math.random() > AnimationController.IDLE_DIRECTION_PROBABILITY;
       this.setAnimation(useIdleFront ? 'idleFront' : 'idleBack');
-    } else if (this.animations.idleFront) {
+    } else if (hasIdleFront) {
       this.setAnimation('idleFront');
-    } else if (this.animations.idleBack) {
+    } else if (hasIdleBack) {
       this.setAnimation('idleBack');
     } else {
       this.setAnimation('walk');
@@ -107,7 +120,13 @@ class AnimationController {
     this.visibleFrame = nextFrame;
   };
 
-  public updateFrame = () => {
+  /**
+   * Shows the current frame and advances the animation by `frameScale` reference
+   * frames (1 = one 60Hz frame) plus any time carried over from the previous cycle
+   * boundary. Returns true when the animation cycle completed (or on every call
+   * when the current animation has no frames at all).
+   */
+  public updateFrame = (frameScale = 1) => {
     if (this.currentAnimationFrames.length === 0) {
       this.showFrame(0);
       return true;
@@ -118,9 +137,17 @@ class AnimationController {
 
     const action = this.currentAnimation;
     const frameSpeed = this.animationSpeeds?.[action] || AnimationController.DEFAULT_FRAME_SPEED;
-    this.currentFrameIndex += frameSpeed;
+    this.currentFrameIndex += frameSpeed * (frameScale + this.carriedFrames);
+    this.carriedFrames = 0;
 
-    if (this.currentFrameIndex >= this.currentAnimationFrames.length) {
+    const cycleLength = this.currentAnimationFrames.length;
+    if (this.currentFrameIndex >= cycleLength) {
+      // Carry the overshoot (converted back to time) into the next step. Discarding
+      // it would lose up to one real display frame per cycle, which makes fast
+      // animations run slower on low refresh rates. The carry is capped at the
+      // step's own elapsed time so it stays within the 100ms stall cap even for
+      // cycles shorter than the cap.
+      this.carriedFrames = Math.min((this.currentFrameIndex - cycleLength) / frameSpeed, frameScale);
       this.currentFrameIndex = 0;
       return true; // Animation cycle completed
     }
