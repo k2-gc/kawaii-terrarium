@@ -63,8 +63,9 @@ Each Mofu can transform into:
 - 🫏 **Horses** (3 variants)
 - 🦆 **Ducks** (2 variants)
 - 🦎 **Chameleons** (4 variants)
-- 🐧 **Penguins** (4 variants)
+- 🐧 **Penguins** (6 variants)
 - 🦊 **Foxes** (2 variants)
+- 🐔 **Chickens** (1 variant)
 
 ## Mofu Book
 
