@@ -2,7 +2,7 @@ import type { MofuConfig } from '../../../../mofus/types';
 import { AnimationController } from './AnimationController';
 import { MovementController } from './MovementController';
 import { getFrameElements, waitForFrames } from './FrameLoader';
-import { TILE_SIZE } from '../constants';
+import { TILE_SIZE, REFERENCE_FRAME_MS, MAX_FRAME_DELTA_MS } from '../constants';
 
 class Mofu {
   // Constants
@@ -16,6 +16,7 @@ class Mofu {
   private onDismissed: () => void;
 
   private activeStateDuration: number = 0;
+  private lastFrameTime: number | undefined;
 
   constructor(
     config: MofuConfig,
@@ -69,25 +70,41 @@ class Mofu {
      * Wait for every frame before animating. A Mofu that starts moving while
      * its frames are still loading shows whichever frame loaded first until the
      * rest arrive, which reads as a walking Mofu stuck on its idle sprite.
+     * The loop is entered through requestAnimationFrame (not `.then(this.animate)`)
+     * because animate needs the frame timestamp that rAF passes to it.
      */
-    waitForFrames(frameElements).then(this.animate);
+    waitForFrames(frameElements).then(() => requestAnimationFrame(this.animate));
   }
 
-  private animate = () => {
+  private animate = (timestamp: number) => {
     const state = this.animationController.getState();
 
     if (state === 'hidden') {
       return;
     }
 
-    const animationCompleted = this.animationController.updateFrame();
+    /**
+     * Scale the per-frame speeds by the real elapsed time so the result does not
+     * depend on the display refresh rate (1 = one 60Hz frame). The first frame
+     * has no previous timestamp and counts as one reference frame; so does any
+     * call without a usable timestamp, so a bad value can never poison the loop.
+     */
+    const hasTimestamp = Number.isFinite(timestamp);
+    const elapsed =
+      hasTimestamp && this.lastFrameTime !== undefined
+        ? timestamp - this.lastFrameTime
+        : REFERENCE_FRAME_MS;
+    this.lastFrameTime = hasTimestamp ? timestamp : undefined;
+    const frameScale = Math.min(Math.max(elapsed, 0), MAX_FRAME_DELTA_MS) / REFERENCE_FRAME_MS;
+
+    const animationCompleted = this.animationController.updateFrame(frameScale);
 
     if (animationCompleted) {
       this.onAnimationComplete();
     }
 
     if (state === 'active' && this.animationController.getCurrentAnimation() === 'walk') {
-      this.movementController.updatePosition();
+      this.movementController.updatePosition(frameScale);
     }
 
     requestAnimationFrame(this.animate);

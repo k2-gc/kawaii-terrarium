@@ -41,14 +41,18 @@ class MovementController {
       Date.now() + MovementController.MIN_DIRECTION_CHANGE_MS + randomDelay;
   };
 
-  public updatePosition = () => {
+  /**
+   * Moves the Mofu by `frameScale` reference frames worth of distance
+   * (1 = one 60Hz frame), bouncing off the panel edges.
+   */
+  public updatePosition = (frameScale = 1) => {
     if (Date.now() >= this.nextDirectionChangeAt) {
       this.reverseDirection();
       this.scheduleNextDirectionChange();
     }
 
     const directionMultiplier = this.moveDirection === 'left' ? -1 : 1;
-    this.x += this.speed * directionMultiplier;
+    this.x += this.speed * directionMultiplier * frameScale;
 
     const maxX = Math.max(0, window.innerWidth - this.width);
     if (this.x <= 0) {
